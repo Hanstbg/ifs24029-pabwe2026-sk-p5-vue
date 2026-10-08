@@ -25,11 +25,11 @@ async function submit() {
 
 <template>
   <form class="space-y-4" @submit.prevent="submit">
-    <div><label class="label" for="name">Nama</label><input id="name" class="input" :value="name" @input="onName" /></div>
-    <div><label class="label" for="email">Alamat Email</label><input id="email" type="email" class="input" :value="email" @input="onEmail" /></div>
-    <div><label class="label" for="password">Kata Sandi</label><input id="password" type="password" class="input" :value="password" @input="onPassword" /></div>
-    <div><label class="label" for="confirm">Konfirmasi Kata Sandi</label><input id="confirm" type="password" class="input" :value="confirm" @input="onConfirm" /></div>
+    <div><label class="label" for="register-name-input">Nama</label><input id="register-name-input" class="input" :value="name" @input="onName" /></div>
+    <div><label class="label" for="register-email-input">Alamat Email</label><input id="register-email-input" type="email" class="input" :value="email" @input="onEmail" /></div>
+    <div><label class="label" for="register-password-input">Kata Sandi</label><input id="register-password-input" type="password" class="input" :value="password" @input="onPassword" /></div>
+    <div><label class="label" for="register-confirm-input">Konfirmasi Kata Sandi</label><input id="register-confirm-input" type="password" class="input" :value="confirm" @input="onConfirm" /></div>
     <p v-if="error" class="text-sm text-rose-600">{{ error }}</p>
-    <button class="btn-primary w-full" :disabled="auth.isLoading"><UserPlus class="h-4 w-4" /> Daftar</button>
+    <button id="register-submit-button" type="submit" class="btn-primary w-full" :disabled="auth.isLoading"><UserPlus class="h-4 w-4" /> Daftar</button>
   </form>
 </template>

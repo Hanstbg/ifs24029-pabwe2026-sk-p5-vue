@@ -25,8 +25,8 @@ describe("LoginPage", () => {
   it("login sukses mengarahkan ke beranda", async () => {
     const { wrapper, auth, push } = await setup();
     const spy = vi.spyOn(auth, "asyncLogin").mockResolvedValue(true);
-    await wrapper.find("#email").setValue("a@b.c");
-    await wrapper.find("#password").setValue("123456");
+    await wrapper.find("#login-email-input").setValue("a@b.c");
+    await wrapper.find("#login-password-input").setValue("123456");
     await wrapper.find("form").trigger("submit");
     await flushPromises();
     expect(spy).toHaveBeenCalledWith({ email: "a@b.c", password: "123456" });
@@ -36,8 +36,8 @@ describe("LoginPage", () => {
   it("login gagal tidak berpindah halaman", async () => {
     const { wrapper, auth, push } = await setup();
     vi.spyOn(auth, "asyncLogin").mockResolvedValue(false);
-    await wrapper.find("#email").setValue("a@b.c");
-    await wrapper.find("#password").setValue("x");
+    await wrapper.find("#login-email-input").setValue("a@b.c");
+    await wrapper.find("#login-password-input").setValue("x");
     await wrapper.find("form").trigger("submit");
     await flushPromises();
     expect(push).not.toHaveBeenCalled();

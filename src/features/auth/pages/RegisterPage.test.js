@@ -10,10 +10,10 @@ const setup = async () => {
   const push = vi.spyOn(r.router, "push").mockResolvedValue();
   const spy = vi.spyOn(auth, "asyncRegister");
   const fill = async (v) => {
-    await r.wrapper.find("#name").setValue(v.name ?? "");
-    await r.wrapper.find("#email").setValue(v.email ?? "");
-    await r.wrapper.find("#password").setValue(v.password ?? "");
-    await r.wrapper.find("#confirm").setValue(v.confirm ?? "");
+    await r.wrapper.find("#register-name-input").setValue(v.name ?? "");
+    await r.wrapper.find("#register-email-input").setValue(v.email ?? "");
+    await r.wrapper.find("#register-password-input").setValue(v.password ?? "");
+    await r.wrapper.find("#register-confirm-input").setValue(v.confirm ?? "");
     await r.wrapper.find("form").trigger("submit");
     await flushPromises();
   };
