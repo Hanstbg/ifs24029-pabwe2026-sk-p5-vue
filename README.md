@@ -6,3 +6,4 @@ Studi Kasus P5 PABWE 2026 — Delcom Auction (Vue 3 + JavaScript)
 2. `bun install`
 3. `bun run dev` lalu buka http://localhost:3000
 4. `bun run test:coverage`
+## p
