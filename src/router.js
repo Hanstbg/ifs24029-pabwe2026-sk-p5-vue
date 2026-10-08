@@ -1,15 +1,18 @@
 import { createRouter, createWebHistory } from "vue-router";
 import { getAccessToken } from "./helpers/apiHelper";
+import AuthLayout from "./features/auth/layouts/AuthLayout.vue";
+import LoginPage from "./features/auth/pages/LoginPage.vue";
+import RegisterPage from "./features/auth/pages/RegisterPage.vue";
 
 export const routes = [
   {
     path: "/auth",
-    component: () => import("./features/auth/layouts/AuthLayout.vue"),
+    component: AuthLayout,
     meta: { guest: true },
     children: [
       { path: "", redirect: "/auth/login" },
-      { path: "login", component: () => import("./features/auth/pages/LoginPage.vue") },
-      { path: "register", component: () => import("./features/auth/pages/RegisterPage.vue") },
+      { path: "login", component: LoginPage },
+      { path: "register", component: RegisterPage },
     ],
   },
   {

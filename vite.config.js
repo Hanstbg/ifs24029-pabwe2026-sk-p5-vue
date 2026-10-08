@@ -3,11 +3,33 @@ import vue from "@vitejs/plugin-vue";
 import tailwindcss from "@tailwindcss/vite";
 import process from "process";
 
+// Menyisipkan CSS utama langsung ke index.html agar tidak menjadi render-blocking request.
+function inlineCriticalCss() {
+  return {
+    name: "inline-critical-css",
+    apply: "build",
+    enforce: "post",
+    transformIndexHtml: {
+      order: "post",
+      handler(html, ctx) {
+        const bundle = ctx.bundle || {};
+        return html.replace(/<link rel="stylesheet"[^>]*href="\/(assets\/[^"]+\.css)"[^>]*>/g, (tag, file) => {
+          const asset = bundle[file];
+          if (!asset || asset.type !== "asset") return tag;
+          const css = String(asset.source);
+          delete bundle[file];
+          return `<style>${css}</style>`;
+        });
+      },
+    },
+  };
+}
+
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
   return {
-    plugins: [vue(), tailwindcss()],
+    plugins: [vue(), tailwindcss(), inlineCriticalCss()],
     server: { port: Number(env.APP_PORT) || 3000 },
     preview: { port: Number(env.APP_PORT) || 3000 },
     define: {
