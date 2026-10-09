@@ -73,7 +73,7 @@ async function deleteAll() {
     <div class="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
       <article v-for="a in filtered" :key="a.id" class="card flex flex-col overflow-hidden !p-0">
         <div class="h-40 bg-slate-200">
-          <img v-if="a.cover" :src="a.cover" :alt="a.title" class="h-full w-full object-cover" />
+          <img v-if="a.cover" :src="a.cover" :alt="a.title" width="400" height="160" decoding="async" class="h-full w-full object-cover" />
         </div>
         <div class="flex flex-1 flex-col gap-2 p-4">
           <div class="flex items-start justify-between gap-2">
