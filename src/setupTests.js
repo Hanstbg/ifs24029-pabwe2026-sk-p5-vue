@@ -2,6 +2,7 @@ import "@testing-library/jest-dom/vitest";
 import { afterEach, vi } from "vitest";
 
 globalThis.DELCOM_BASEURL = "https://open-api.delcom.org/api/v1";
+globalThis.DELCOM_ASSETURL = "https://open-api.delcom.org";
 
 // Tunggu semua import() dinamis (lazy-load Toast UI) selesai sebelum environment dibongkar
 afterEach(async () => {

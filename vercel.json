@@ -1,5 +1,8 @@
 {
-  "rewrites": [{ "source": "/((?!assets/|logo\\.svg|robots\\.txt).*)", "destination": "/index.html" }],
+  "rewrites": [
+    { "source": "/api/v1/:path*", "destination": "https://open-api.delcom.org/api/v1/:path*" },
+    { "source": "/((?!api/|assets/|logo\\.svg|robots\\.txt).*)", "destination": "/index.html" }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",
